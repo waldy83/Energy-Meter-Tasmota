@@ -980,9 +980,6 @@ void CmndStatus(void)
 #endif
                           ",\"" D_JSON_COREVERSION "\":\"" ARDUINO_CORE_RELEASE "\",\"" D_JSON_SDKVERSION "\":\"%s\","
                           "\"CpuFrequency\":%d,\"Hardware\":\"%s\""
-#ifdef CONFIG_ESP_WIFI_REMOTE_ENABLED
-                          ",\"HostedMCU\":{\"Hardware\":\"%s\",\"Version\":\"%s\"}"
-#endif  // CONFIG_ESP_WIFI_REMOTE_ENABLED
                           "%s}}"),
                           TasmotaGlobal.version, TasmotaGlobal.image_name, GetCodeCores().c_str(), GetBuildDateAndTime().c_str()
 #ifdef ESP8266
@@ -990,9 +987,6 @@ void CmndStatus(void)
 #endif
                           , ESP.getSdkVersion(),
                           ESP.getCpuFreqMHz(), GetDeviceHardwareRevision().c_str(),
-#ifdef CONFIG_ESP_WIFI_REMOTE_ENABLED
-                          GetHostedMCU().c_str(), GetHostedFwVersion(1).c_str(),
-#endif  // CONFIG_ESP_WIFI_REMOTE_ENABLED
                           GetStatistics().c_str());
     CmndStatusResponse(2);
   }
@@ -1035,7 +1029,7 @@ void CmndStatus(void)
                           ESP_getFlashChipSize()/1024, ESP.getFlashChipRealSize()/1024
 #endif // ESP8266
                           , ESP_getFlashChipId()
-                          , ESP_getFlashChipSpeed()/1000000);
+                          , ESP.getFlashChipSpeed()/1000000);
     ResponseAppendFeatures();
     XsnsDriverState();
     ResponseAppend_P(PSTR(",\"Sensors\":"));
@@ -2143,7 +2137,7 @@ void CmndTemplate(void)
         if (8 == i) { j = 12; }
 #endif  // ESP8266
 #ifdef ESP32
-#if CONFIG_IDF_TARGET_ESP32C2 || CONFIG_IDF_TARGET_ESP32C3 || CONFIG_IDF_TARGET_ESP32C5 || CONFIG_IDF_TARGET_ESP32C6
+#if CONFIG_IDF_TARGET_ESP32C2 || CONFIG_IDF_TARGET_ESP32C3 || CONFIG_IDF_TARGET_ESP32C6
         // No change
 #elif CONFIG_IDF_TARGET_ESP32S2 || CONFIG_IDF_TARGET_ESP32S3
 //        if (22 == i) { j = 33; }  // TODO 20230821 verify
@@ -2616,7 +2610,7 @@ void CmndTeleperiod(void)
   if ((XdrvMailbox.payload >= 0) && (XdrvMailbox.payload < 3601)) {
     Settings->tele_period = (1 == XdrvMailbox.payload) ? TELE_PERIOD : XdrvMailbox.payload;
     if ((Settings->tele_period > 0) && (Settings->tele_period < 10)) {
-      Settings->tele_period = 10;   // Do not allow periods < 10 seconds
+      // Settings->tele_period = 10;   // Do not allow periods < 10 seconds - CHANGED BY WALDY
     }
   }
   TasmotaGlobal.tele_period = (Settings->tele_period) ? Settings->tele_period : 3601;  // Show teleperiod data also on empty command
@@ -3102,4 +3096,5 @@ void CmndTouchThres(void) {
   ResponseCmndNumber(Settings->touch_threshold);
 }
 #endif  // ESP32 SOC_TOUCH_VERSION_1 or SOC_TOUCH_VERSION_2
+
 #endif  // ESP32
