@@ -57,15 +57,15 @@
 \*********************************************************************************************/
 
 // -- Project -------------------------------------
-//#define PROJECT                "counter"         // PROJECT is used as the default topic delimiter
-#define PROJECT                "lesekopf"         // PROJECT is used as the default topic delimiter
+#define PROJECT                "gaszaehler"         // PROJECT is used as the default topic delimiter
+
 
 // -- MQTT - Telemetry ----------------------------
 #define TELE_PERIOD            10                 // [TelePeriod] Telemetry (0 = disable, 10 - 3600 seconds) - CHANGED BY WALDY
 
 
 // -- HTTP ----------------------------------------
-#define FRIENDLY_NAME          "Lesekopf"         // [FriendlyName] Friendlyname up to 32 characters used by webpages and Alexa
+#define FRIENDLY_NAME          "Gaszaehler"         // [FriendlyName] Friendlyname up to 32 characters used by webpages and Alexa
 
 
 // TEMPLATE
@@ -87,7 +87,8 @@
 #ifdef USER_TEMPLATE
 #undef USER_TEMPLATE
 #endif
-#define USER_TEMPLATE          "{\"NAME\":\"Lesekopf\",\"GPIO\":[1,1,1,1,1,1,1,1,1,1,1,1,1,1],\"FLAG\":0,\"BASE\":18}" // [Template] Set JSON template
+#define USER_TEMPLATE          "{\"NAME\":\"Gaszaehler\",\"GPIO\":[1,1,1,1,1,1,1,1,1,1,1,1,1,1],\"FLAG\":0,\"BASE\":18}" // [Template] Set JSON template
+
 
 // -- Eigenes Template - Ende -------------------------------------
 
