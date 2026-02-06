@@ -3,19 +3,53 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased] - Development
 
-## [15.2.0.2]
+## [15.2.0.4]
 ### Added
+- Dingtian `SetOption81 1` to invert input and `SetOption133 1` to invert output (#24364)
+- Improv USB CDC connected devices
 
 ### Breaking Changed
 
 ### Changed
+- Dingtian define `DINGTIAN_INPUTS_INVERTED` replaced by `SetOption81` (#24364)
+
+### Fixed
+- Udisplay SPI driver display dimension parameters regression from v15.1.0.1 (#24376)
+- ESP32 BearSSL hw accelerated SHA1 (#24397)
+
+### Removed
+
+## [15.2.0.3] 20260124
+### Added
+- Berry `path.listdir("file.tapp#")` to list directory inside '.tapp' archives (#24367)
+
+### Changed
+- ESP8266 platform update from 2025.12.00 to 2026.01.00 (#24354)
+- ESP32 Platform from 2025.12.31 to 2026.01.30, Framework (Arduino Core) from v3.1.8 to v3.1.9 and IDF from v5.3.4.251223 to v5.3.4.251226 (#24354)
+- JPEG decoder (#24368)
+
+### Fixed
+- Display ST77xx and Parallel issues introduced after refactor UDisplay (#24368)
+
+## [15.2.0.2] 20260117
+### Added
+- Support for Adafruit I2C QT Rotary Encoder (#24270)
+- Zigbee support for `int24` type (#24334)
+
+### Changed
 - ESP8266 platform update from 2025.10.00 to 2025.12.00 (#24254)
 - ESP32 Platform from 2025.12.30 to 2025.12.31, Framework (Arduino Core) from v3.1.7 to v3.1.8 and IDF from v5.3.4.251205 to v5.3.4.251223 (#24254)
+- Refactor Adafruit Seesaw soil driver (#24270)
+- LM75AD output when no valid reading received from 0 to null (#24263)
 
 ### Fixed
 - ESP32 BLE not starting (#24240)
-
-### Removed
+- GDK101 power on detection (#24242)
+- Udisplay backlight with SPI displays (#24277)
+- ESP8266 KNX unwanted reply (#24267)
+- Zigbee compilation warning in Berry mapping (#24333)
+- ScrubDNS() function (#23886)
+- Wireguard crash on RISC-V (esp32c3, esp32c6)
 
 ## [15.2.0.1]
 ### Added
