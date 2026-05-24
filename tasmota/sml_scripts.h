@@ -14,7 +14,7 @@
     "->sensor53 c1 0\\n" \
     ">M 1\\n" \
     "+1,14,c,1,-500,Gas\\n" \
-    "1,1-0:1.8.0*255(@100,Gesamtverbrauch,m3,total,2)\\n" \
+    "1,1-0:1.8.0*255(@100,Gesamtverbrauch,m3,Total,2)\\n" \
     "#\\n"
 
 // --- SCRIPT 2: Gaszähler mit Tages/Monats/Jahres-Verbrauch
@@ -25,7 +25,7 @@
     "->sensor53 c1 0\\n" \
     ">M 1\\n" \
     "+1,14,c,1,-500,Gas\\n" \
-    "1,1-0:1.8.0*255(@100,Gesamtverbrauch,m3,total,2)\\n" \
+    "1,1-0:1.8.0*255(@100,Gesamtverbrauch,m3,Total,2)\\n" \
     "#\\n"
 
 // --- HTML Auswahl-Menü ---
